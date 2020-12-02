@@ -3,7 +3,9 @@ var question = document.getElementById('question')
 var highscore = document.getElementById('highscore')
 var start = document.getElementById('start')
 var time = document.createElement('p')
+var btncreate = document.createElement('button')
 var count = 180
+var currentq = ''
 
 //timer function
 function timerButton() {
@@ -19,12 +21,16 @@ function timerButton() {
         console.log('time\'s up!');
         clearInterval(timer);
     }
+
     
 }
+
+
 //add event listener on click to start button
 function startBtn () {
     start.addEventListener('click', container )
 }
+
 
 function startQuiz () {
     console.log('test')
@@ -39,4 +45,19 @@ startBtn()
 
 
 
+function questionOne() {
+    //appends p tag
+    var p = question.appendChild(time).setAttribute('id', 'q1')
+    q1= document.getElementById('q1')
+    q1.innerText = 'This is question one'
+    q1.appendChild(btncreate).setAttribute('id', 'b1')
+    b1=document.getElementById('b1')
+    b1.innerText='next'
+    b1.addEventListener('click', questionTwo)
+    
 
+}
+
+
+questionOne();
+function questionTwo ()
