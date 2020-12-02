@@ -23,10 +23,19 @@ function timerButton() {
 }
 //add event listener on click to start button
 function startBtn () {
-    start.addEventListener('click', timerButton)
+    start.addEventListener('click', container )
 }
-startBtn()
 
+function startQuiz () {
+    console.log('test')
+}
+
+function container (){
+    startQuiz();
+    timerButton();
+}
+
+startBtn()
 
 
 
