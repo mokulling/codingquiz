@@ -2,11 +2,13 @@ var time = document.getElementById('time')
 var question = document.getElementById('question')
 var highscore = document.getElementById('highscore')
 var start = document.getElementById('start')
-var time = document.createElement('p')
+var para = document.createElement('p')
 var timerp = document.getElementById('time')
 var btncreate = document.createElement('button')
 var count = 180
-var currentq = ''
+var correctans = 0
+var ans = ''
+var currentq = document.getElementById('currentq')
 
 //timer function
 function timerButton() {
@@ -58,15 +60,12 @@ function questionOne() {
     var correct = answerids[1]
     //appends p tag
 
-    var p = question.appendChild(time).setAttribute('id', 'q1')
+    var p = question.appendChild(currentq).setAttribute('id', 'q1')
     //selects question p tag
     var q1= document.getElementById('q1')
     //adds question
     q1.innerText = 'This is question one'
     //creates button for next question
-    q1.appendChild(btncreate).setAttribute('id', 'b1')
-    var b1=document.getElementById('b1')
-    b1.innerText='next'
     //for loop iterating each answer and creating a button
     for (let i = 0; i < answers1.length; i++) {
         var ans = document.createElement('button')
@@ -76,27 +75,81 @@ function questionOne() {
         ans.addEventListener('click', function () {
             console.log(answerids[i])
             if (correct == answerids[i]){
-                alert('right!')
+                question.appendChild(yesno)
+                yesno.innerText='correct'
+                //alert('right!')
+                correctans++
+                console.log(correctans)
             } else {
-                alert('wrong!')
+                //alert('wrong!')
+                question.appendChild(yesno)
+                yesno.innerText='incorrect'
+
             }
         }
         
         )
     }
-    }
+    nextQ()
+}
     //b1.addEventListener('click', questionTwo)
     
 
 
 
 
-   
     
 
 
 function questionTwo () {
+    
     console.log('this worked')
-    q1.innerText="this is question two"
+    var answers2= ['This is q 2', 'this is q2', 'this is 2', 'so is 2']
+    var answerids2 = ['A', 'B', 'C', 'D']
+    var correct = answerids2[2]
+    //appends p tag
+    var p2 = question.appendChild(currentq).setAttribute('id', 'q2')
+    //selects question p tag
+    var q2= document.getElementById('q2')
+    //adds question
+    q2.innerText = 'This is question one'
+    //creates button for next question
+    //for loop iterating each answer and creating a button
+    for (let i = 0; i < answers2.length; i++) {
+        var ans2 = document.createElement('button')
+        ans2.setAttribute('id', answerids2[i]);
+        ans2.textContent = answers2[i];
+        question.appendChild(ans2)
+        ans2.addEventListener('click', function () {
+            console.log(answerids2[i])
+            if (correct == answerids2[i]){
+                question.appendChild(yesno)
+                yesno.innerText='correct'
+                //alert('right!')
+                correctans++
+                console.log(correctans)
+            } else {
+                //alert('wrong!')
+                question.appendChild(yesno)
+                yesno.innerText='incorrect'
+
+            }
+        }
+        
+        )
+    }
+    nextQ()
+
+    //q1.innerText="this is question two"
     
 }
+
+function nextQ () {
+    var nextbtn = document.getElementById('nextbtn')
+    nextbtn.appendChild(btncreate).setAttribute('id', 'b1')
+    var b1=document.getElementById('b1')
+    b1.innerText='Next'
+    nextbtn.addEventListener('click', questionTwo)
+
+}
+   
