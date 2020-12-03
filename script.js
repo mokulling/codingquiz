@@ -152,4 +152,11 @@ function nextQ () {
     nextbtn.addEventListener('click', questionTwo)
 
 }
-   
+
+highscore.addEventListener('click', highscore)
+
+function highscorealert () {
+    alert('high scores')
+
+}
+
