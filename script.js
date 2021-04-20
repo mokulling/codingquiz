@@ -10,13 +10,13 @@ var correctans = 0
 var ans = ''
 var currentq = document.getElementById('currentq')
 var yesno = document.getElementById('yesno')
+var btnContainer = document.getElementById('btn-container')
 
 //timer function
 function timerButton() {
     var timer = setInterval(function() {
-        //console.log(count);
         count--;
-        timerp.innerHTML = count
+        timerp.innerHTML = 'Time remaining: ' + count
         if(count===0){
             stopInterval()
         }
@@ -38,12 +38,8 @@ function startBtn () {
 }
 
 
-function startQuiz () {
-    console.log('test')
-}
 
 function container (){
-    startQuiz();
     timerButton();
     questionOne()
 }
@@ -72,7 +68,7 @@ function questionOne() {
         var ans = document.createElement('button')
         ans.setAttribute('id', answerids[i]);
         ans.textContent = answers1[i];
-        question.appendChild(ans)
+        btnContainer.appendChild(ans)
         ans.addEventListener('click', function () {
             console.log(answerids[i])
             if (correct == answerids[i]){
@@ -82,118 +78,166 @@ function questionOne() {
             } else {
                 question.appendChild(yesno)
                 yesno.innerText='incorrect'
+                count = count-5
                 
 
             }
-            q1.innerText= ''
-            // yesno.innerText = ''
-            question.innerHTML = ''
+            // question.innerHTML = ''
+            btnContainer.innerHTML = ''
             questionTwo()
+   
         }
         
         )
     }
+    // // yesno.innerText = ''
+
    
 }
     //b1.addEventListener('click', questionTwo)
     
-
-
-
-
+    function questionTwo() {
+        //defines answers
+        var answers1= ['hypertext markup language', 'how to make lemons', 'hoses to move losers', 'hypertext Master language']
+        var answerids = ['A', 'B', 'C', 'D']
+        var correct = answerids[0]
+        //appends p tag
     
-
-
-function questionTwo () {
-
+        // var p = question.appendChild(currentq).setAttribute('id', 'q2')
+        //selects question p tag
+        var q1= document.getElementById('q1')
+        //adds question
+        q1.innerText = 'What does HTML stand for'
+        //creates button for next question
+        //for loop iterating each answer and creating a button
+        for (let i = 0; i < answers1.length; i++) {
+            var ans = document.createElement('button')
+            ans.setAttribute('id', answerids[i]);
+            ans.textContent = answers1[i];
+            btnContainer.appendChild(ans)
+            ans.addEventListener('click', function () {
+                console.log(answerids[i])
+                if (correct == answerids[i]){
+                    question.appendChild(yesno)
+                    yesno.innerText='correct'
+                    correctans++
+                } else {
+                    question.appendChild(yesno)
+                    yesno.innerText='incorrect'
+                    count = count-5
     
-    var answers2= ['Hypertext master language', 'Hypertext Markup Language', 'How to make lemonade', 'Hands to move lastly']
-    var answerids2 = ['A', 'B', 'C', 'D']
-    var correct = answerids2[1]
-    //appends p tag
-    var p2 = question.appendChild(currentq).setAttribute('id', 'q2')
-    //selects question p tag
-    var q2= document.getElementById('q2')
-    //adds question
-    q2.innerText = 'What does HTML stand for'
-    //creates button for next question
-    //for loop iterating each answer and creating a button
-    for (let i = 0; i < answers2.length; i++) {
-        var ans2 = document.createElement('button')
-        ans2.setAttribute('id', answerids2[i]);
-        ans2.textContent = answers2[i];
-        question.appendChild(ans2)
-        ans2.addEventListener('click', function () {
-            console.log(answerids2[i])
-            if (correct == answerids2[i]){
-                question.appendChild(yesno)
-                yesno.innerText='correct'
-                //alert('right!')
-                correctans++
-                console.log(correctans)
-            } else {
-                //alert('wrong!')
-                question.appendChild(yesno)
-                yesno.innerText='incorrect'
-
+                }
+                btnContainer.innerHTML = ''
+                questionThree()
             }
+            
+            )
         }
-        
-        )
+       
     }
-    q2.innerText= ''
-    // yesno.innerText = ''
-    question.innerHTML = ''
-    // questionThree()
-
-
-    //q1.innerText="this is question two"
     
-}
+    function questionThree() {
+        //defines answers
+        var answers1= ['Object', 'Array', 'variable', 'twister']
+        var answerids = ['A', 'B', 'C', 'D']
+        var correct = answerids[3]
+        //appends p tag
+    
+        // var p = question.appendChild(currentq).setAttribute('id', 'q2')
+        //selects question p tag
+        var q1= document.getElementById('q1')
+        //adds question
+        q1.innerText = 'which is not a javascript term'
+        //creates button for next question
+        //for loop iterating each answer and creating a button
+        for (let i = 0; i < answers1.length; i++) {
+            var ans = document.createElement('button')
+            ans.setAttribute('id', answerids[i]);
+            ans.textContent = answers1[i];
+            btnContainer.appendChild(ans)
+            ans.addEventListener('click', function () {
+                console.log(answerids[i])
+                if (correct == answerids[i]){
+                    question.appendChild(yesno)
+                    yesno.innerText='correct'
+                    correctans++
+                } else {
+                    question.appendChild(yesno)
+                    yesno.innerText='incorrect'
+                    count = count-5
+    
+                }
+                btnContainer.innerHTML = ''
+                questionFour()
+            }
+            
+            )
+        }
+       
+    }
 
-// function questionThree() {
-//     var answers3= ['Array', 'Object', 'twister', 'variable']
-//     var answerids3 = ['A', 'B', 'C', 'D']
-//     var correct = answerids3[2]
-//     //appends p tag
-//     var p3 = question.appendChild(currentq).setAttribute('id', 'q3')
-//     //selects question p tag
-//     var q3= document.getElementById('q3')
-//     //adds question
-//     q3.innerText = 'Which of these are not javascript terms'
-//     //creates button for next question
-//     //for loop iterating each answer and creating a button
-//     for (let i = 0; i < answers2.length; i++) {
-//         var ans3 = document.createElement('button')
-//         ans3.setAttribute('id', answerids3[i]);
-//         ans3.textContent = answers3[i];
-//         question.appendChild(ans3)
-//         ans3.addEventListener('click', function () {
-//             console.log(answerids3[i])
-//             if (correct == answerids3[i]){
-//                 question.appendChild(yesno)
-//                 yesno.innerText='correct'
-//                 //alert('right!')
-//                 correctans++
-//                 console.log(correctans)
-//             } else {
-//                 //alert('wrong!')
-//                 question.appendChild(yesno)
-//                 yesno.innerText='incorrect'
-
-//             }
-//         }
         
-//         )
-//     }
+    function questionFour() {
+        //defines answers
+        var answers1= ['Object', 'Array', 'variable', 'twister']
+        var answerids = ['A', 'B', 'C', 'D']
+        var correct = answerids[3]
+        //appends p tag
+    
+        // var p = question.appendChild(currentq).setAttribute('id', 'q2')
+        //selects question p tag
+        var q1= document.getElementById('q1')
+        //adds question
+        q1.innerText = 'which is not a javascript term'
+        //creates button for next question
+        //for loop iterating each answer and creating a button
+        for (let i = 0; i < answers1.length; i++) {
+            var ans = document.createElement('button')
+            ans.setAttribute('id', answerids[i]);
+            ans.textContent = answers1[i];
+            btnContainer.appendChild(ans)
+            ans.addEventListener('click', function () {
+                console.log(answerids[i])
+                if (correct == answerids[i]){
+                    question.appendChild(yesno)
+                    yesno.innerText='correct'
+                    correctans++
+                } else {
+                    question.appendChild(yesno)
+                    yesno.innerText='incorrect'
+                    count = count-5
+    
+                }
+                btnContainer.innerHTML = ''
+                highscorealert()
+            }
+            
+            )
+        }
+    }
+       
 
 
-// }
 
 
-highscore.addEventListener('click', highscore)
+
+    
+
+
+
+highscore.addEventListener('click', highscorealert)
 
 function highscorealert () {
-    alert('high scores')
+    var q1= document.getElementById('q1')
 
+    q1.innerText = 'Here are the high scores'
+    var highInput = document.createElement('input')
+    q1.appendChild(highInput)
+    highInput.addEventListener('input', scoreboard)
+}
+
+
+function scoreboard () {
+    
+    console.log('working')
 }
