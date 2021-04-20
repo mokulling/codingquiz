@@ -232,6 +232,8 @@ function highscorealert () {
 
     q1.innerText = 'Here are the high scores'
     var highInput = document.createElement('input')
+    var getInput = document.getElementsByName('input')
+
     q1.appendChild(highInput)
     highInput.addEventListener('input', scoreboard)
 }
@@ -239,5 +241,5 @@ function highscorealert () {
 
 function scoreboard () {
     
-    console.log('working')
+    // console.log(getInput.value)
 }
